@@ -1,0 +1,10 @@
+\chapter{Code Excerpts}
+
+This appendix should contain curated implementation excerpts. Do not paste the entire project.
+
+\begin{codebox}{Example core function}{Python}
+def summarize_evidence(items):
+    """Return a compact evidence summary for the report."""
+    ranked = sorted(items, key=lambda item: item["importance"], reverse=True)
+    return ranked[:5]
+\end{codebox}

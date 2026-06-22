@@ -1,0 +1,4 @@
+interface:
+  display_name: "专业发型建议"
+  short_description: "从脸型发质诊断到可直接给理发师看的剪发话术。"
+  default_prompt: "Use $professional-hairstylist to analyze my face shape, head shape, hair texture, and style goals, then give practical haircut plans with Chinese salon instructions."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "异性聊天升温"
+  short_description: "帮你改写微信回复，自然推进暧昧与邀约。"
+  default_prompt: "Use $personal-charm-chat to analyze her message, rewrite my draft reply, and give several natural WeChat replies with different warmth levels."

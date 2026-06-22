@@ -1,0 +1,174 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{report-style}[2026/06/02 Elegant report style]
+
+\RequirePackage[a4paper,top=28mm,bottom=30mm,left=28mm,right=28mm]{geometry}
+\RequirePackage{fontspec}
+\RequirePackage{microtype}
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{array}
+\RequirePackage{tabularx}
+\RequirePackage{longtable}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}
+\RequirePackage{enumitem}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{float}
+\RequirePackage{placeins}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{listings}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{natbib}
+\RequirePackage[colorlinks=true,linkcolor=Accent,citecolor=Accent,urlcolor=Accent]{hyperref}
+\RequirePackage[nameinlink,noabbrev]{cleveref}
+
+\usetikzlibrary{arrows.meta,positioning,fit,calc,shapes.geometric}
+\pgfplotsset{compat=1.18}
+
+\definecolor{Ink}{HTML}{172026}
+\definecolor{Muted}{HTML}{5D6975}
+\definecolor{Accent}{HTML}{2F6F73}
+\definecolor{AccentTwo}{HTML}{A35F3D}
+\definecolor{Paper}{HTML}{F7F5EF}
+\definecolor{Line}{HTML}{D8D3C7}
+\definecolor{CodeBg}{HTML}{F3F1EA}
+
+\IfFontExistsTF{Libertinus Serif}
+  {\setmainfont{Libertinus Serif}}
+  {\IfFontExistsTF{Georgia}{\setmainfont{Georgia}}{}}
+\IfFontExistsTF{Inter}
+  {\setsansfont{Inter}}
+  {\IfFontExistsTF{Arial}{\setsansfont{Arial}}{}}
+\IfFontExistsTF{JetBrains Mono}
+  {\setmonofont{JetBrains Mono}}
+  {\IfFontExistsTF{Consolas}{\setmonofont{Consolas}}{}}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.25em}
+\linespread{1.08}
+\setlist{itemsep=0.2em,topsep=0.4em}
+
+\captionsetup{
+  labelfont={bf,color=Accent},
+  textfont={small,color=Ink},
+  singlelinecheck=false
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{Muted}\leftmark}
+\fancyhead[R]{\small\sffamily\color{Muted}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Line}\leaders\hrule height \headrulewidth\hfill}}
+
+\titleformat{\chapter}
+  {\Huge\sffamily\bfseries\color{Ink}}
+  {\color{Accent}\thechapter}
+  {0.7em}
+  {}
+  [\vspace{0.2em}{\color{Line}\titlerule[0.8pt]}]
+\titlespacing*{\chapter}{0pt}{-4pt}{26pt}
+\titleformat{\section}
+  {\Large\sffamily\bfseries\color{Ink}}
+  {\thesection}
+  {0.6em}
+  {}
+\titleformat{\subsection}
+  {\large\sffamily\bfseries\color{Accent}}
+  {\thesubsection}
+  {0.6em}
+  {}
+
+\newcommand{\ReportTitleText}{Untitled Report}
+\newcommand{\ReportSubtitleText}{}
+\newcommand{\ReportAuthorText}{}
+\newcommand{\ReportDateText}{\today}
+\newcommand{\ReportTitle}[1]{\renewcommand{\ReportTitleText}{#1}}
+\newcommand{\ReportSubtitle}[1]{\renewcommand{\ReportSubtitleText}{#1}}
+\newcommand{\ReportAuthor}[1]{\renewcommand{\ReportAuthorText}{#1}}
+\newcommand{\ReportDate}[1]{\renewcommand{\ReportDateText}{#1}}
+
+\newcommand{\MakeReportTitle}{%
+  \begin{titlepage}
+    \pagecolor{Paper}
+    \color{Ink}
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[Accent] (current page.north west) rectangle ([xshift=18mm]current page.south west);
+      \fill[AccentTwo] ([xshift=18mm]current page.north west) rectangle ([xshift=22mm]current page.south west);
+      \draw[Line,line width=0.8pt] ([xshift=36mm,yshift=-34mm]current page.north west) -- ([xshift=-28mm,yshift=-34mm]current page.north east);
+    \end{tikzpicture}
+    \vspace*{34mm}
+    \hspace*{22mm}
+    \begin{minipage}{0.76\textwidth}
+      {\sffamily\bfseries\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000\fontsize{28}{34}\selectfont \ReportTitleText\par}
+      \vspace{8mm}
+      {\sffamily\Large\color{Muted}\ReportSubtitleText\par}
+      \vfill
+      {\sffamily\large \ReportAuthorText\par}
+      \vspace{2mm}
+      {\sffamily\color{Muted}\ReportDateText\par}
+    \end{minipage}
+    \clearpage
+    \nopagecolor
+  \end{titlepage}
+}
+
+\newtcolorbox{findingbox}[1]{
+  enhanced,
+  breakable,
+  colback=Accent!6,
+  colframe=Accent,
+  boxrule=0.8pt,
+  arc=2pt,
+  left=9pt,
+  right=9pt,
+  top=8pt,
+  bottom=8pt,
+  title={#1},
+  fonttitle=\sffamily\bfseries,
+  coltitle=Ink
+}
+
+\lstdefinestyle{reportcode}{
+  backgroundcolor=\color{CodeBg},
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{Accent}\bfseries,
+  commentstyle=\color{Muted},
+  stringstyle=\color{AccentTwo},
+  numbers=left,
+  numberstyle=\tiny\color{Muted},
+  numbersep=8pt,
+  frame=single,
+  rulecolor=\color{Line},
+  framerule=0.4pt,
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=2,
+  columns=fullflexible
+}
+
+\newtcblisting{codebox}[2]{
+  enhanced,
+  breakable,
+  listing only,
+  listing options={style=reportcode,language=#2},
+  colback=CodeBg,
+  colframe=Line,
+  boxrule=0.5pt,
+  arc=2pt,
+  title={#1},
+  fonttitle=\sffamily\bfseries,
+  coltitle=Ink,
+  left=4pt,
+  right=4pt,
+  top=4pt,
+  bottom=4pt
+}
+
+\newcommand{\term}[1]{\textbf{\sffamily #1}}

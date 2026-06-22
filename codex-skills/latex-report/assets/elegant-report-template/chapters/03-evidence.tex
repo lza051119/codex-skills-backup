@@ -1,0 +1,40 @@
+\chapter{Evidence And Results}
+
+\section{Evidence Summary}
+
+This chapter should contain the strongest figures, tables, measurements, examples, or qualitative evidence. Each figure or table should support a clear claim in the surrounding text.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.82\textwidth,
+  height=6cm,
+  ybar,
+  ymin=0,
+  ylabel={Score},
+  symbolic x coords={Baseline,Variant A,Variant B,Proposed},
+  xtick=data,
+  nodes near coords,
+  nodes near coords align={vertical},
+  bar width=18pt,
+  axis lines*=left,
+  tick style={draw=none},
+  ymajorgrids=true,
+  grid style={Line}
+]
+\addplot[fill=Accent!75,draw=Accent] coordinates {
+  (Baseline,62)
+  (Variant A,71)
+  (Variant B,76)
+  (Proposed,84)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Example pgfplots chart. Replace with real metrics or generated figure files.}
+\label{fig:example-chart}
+\end{figure}
+
+\section{Interpretation}
+
+Explain what the reader should learn from \Cref{fig:example-chart}. A good evidence section does not merely display data; it tells the reader why the data changes the conclusion.

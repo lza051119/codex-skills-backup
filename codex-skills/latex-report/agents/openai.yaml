@@ -1,0 +1,3 @@
+display_name: LaTeX Report
+short_description: Build elegant LaTeX PDF reports.
+default_prompt: Create an elegant LaTeX report and compile it to PDF.

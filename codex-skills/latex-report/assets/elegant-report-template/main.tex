@@ -1,0 +1,38 @@
+\documentclass[UTF8,11pt,a4paper,openany]{ctexrep}
+
+\usepackage{report-style}
+
+\ReportTitle{Elegant Technical Report}
+\ReportSubtitle{A native LaTeX template for evidence-backed PDF reports}
+\ReportAuthor{Prepared by Codex}
+\ReportDate{\today}
+
+\begin{document}
+
+\MakeReportTitle
+
+\pagenumbering{roman}
+\begin{abstract}
+This template is a starting point for polished technical, research, course, and project reports.
+Replace this abstract with a concise summary of the report question, method, evidence, and conclusion.
+\end{abstract}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\clearpage
+
+\pagenumbering{arabic}
+
+\input{chapters/01-introduction}
+\input{chapters/02-method}
+\input{chapters/03-evidence}
+\input{chapters/04-conclusion}
+
+\appendix
+\input{appendices/code-excerpts}
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+\end{document}

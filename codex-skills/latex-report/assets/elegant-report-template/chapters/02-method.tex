@@ -1,0 +1,44 @@
+\chapter{Method And Design}
+
+\section{System View}
+
+\Cref{fig:pipeline} shows a compact example of a TikZ pipeline. Replace it with a diagram that matches the actual project, method, or analysis.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  node distance=1.55cm,
+  stage/.style={draw=Accent, rounded corners=2pt, thick, align=center,
+    minimum width=2.55cm, minimum height=0.95cm, fill=Accent!6},
+  arrow/.style={-{Latex[length=2.4mm]}, thick, draw=Ink!70}
+]
+  \node[stage] (source) {Source\\material};
+  \node[stage, right=of source] (analysis) {Analysis\\and synthesis};
+  \node[stage, right=of analysis] (figures) {Evidence\\figures};
+  \node[stage, right=of figures] (report) {LaTeX\\PDF};
+  \draw[arrow] (source) -- (analysis);
+  \draw[arrow] (analysis) -- (figures);
+  \draw[arrow] (figures) -- (report);
+\end{tikzpicture}
+\caption{Example pipeline diagram authored directly in TikZ.}
+\label{fig:pipeline}
+\end{figure}
+
+\section{Design Principles}
+
+Use prose here to explain the design or method. When choices matter, use a compact decision matrix instead of a dense paragraph.
+
+\begin{table}[htbp]
+\centering
+\caption{Example decision matrix}
+\label{tab:decision-matrix}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.24\textwidth}X>{\raggedright\arraybackslash}p{0.17\textwidth}}
+\toprule
+Decision & Rationale & Outcome \\
+\midrule
+Native LaTeX & Enables precise control over chapters, figures, appendices, and typography. & Adopted \\
+Curated code excerpts & Keeps the main report readable while preserving technical evidence. & Adopted \\
+Rendered QA & Catches layout failures that text inspection misses. & Required \\
+\bottomrule
+\end{tabularx}
+\end{table}
