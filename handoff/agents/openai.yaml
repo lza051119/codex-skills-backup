@@ -1,0 +1,4 @@
+interface:
+  display_name: "Handoff"
+  short_description: "Transfer incomplete work safely across sessions"
+  default_prompt: "Use $handoff to transfer this incomplete task safely to another session."

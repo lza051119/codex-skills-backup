@@ -1,0 +1,4 @@
+interface:
+  display_name: "AgentOS VM188 Deploy"
+  short_description: "Operate VM188 with independent Desktop deployment tools"
+  default_prompt: "Use $agentos-vm188-deploy to inspect VM188 or choose among its four deployment routes, following this task's data-retention and rebuild scope with the independent Desktop tools."

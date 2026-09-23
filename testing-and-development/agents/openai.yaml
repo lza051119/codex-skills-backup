@@ -1,0 +1,4 @@
+interface:
+  display_name: "测试与开发"
+  short_description: "基于证据完成静态分析、黑盒测试、动态诊断、缺陷修复与报告"
+  default_prompt: "请使用 $testing-and-development 对本次任务进行测试、诊断和修复，并交付可复核的测试报告。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fast Quality Dev"
+  short_description: "Risk-scaled fast delivery with approval gates"
+  default_prompt: "Use $fast-quality-dev to clarify, risk-classify, implement, and verify this repository change."
